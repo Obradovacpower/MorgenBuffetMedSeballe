@@ -1,0 +1,78 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - MorgenBuffet</title>
+
+    <environment include="Development">
+        <link rel="stylesheet" href="~/lib/normalize.css" />
+        <link rel="stylesheet" href="~/css/site.css" />
+    </environment>
+    <environment exclude="Development">
+        <link rel="stylesheet" href="~/css/site.css" />
+    </environment>
+</head>
+<body>
+    <div id="wrapper">
+        <header>
+            <h1>Breakfast Buffet at Ermin and Sebastian</h1>
+        </header>
+        <nav>
+            <ul>
+                @if (User.HasClaim("Admin", "Yes"))
+                {
+                    <li><a asp-controller="Home" asp-action="Index" class="menu doAjax">Index</a></li>
+                    <li>
+                        <a asp-controller="Home" asp-action="Kitchen" class="menu">Kitchen</a>
+                    </li>
+                    <li>
+                        <a asp-controller="Home" asp-action="Reception" class="menu">Reception</a>
+                    </li>
+                    <li>
+                        <a asp-controller="Home" asp-action="Restaurant" class="menu">Restaurant</a>
+                    </li>
+                }
+                
+                @if (SignInManager.IsSignedIn(User) != true)
+                {
+                    <li class="menu">
+                        <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Register">Register</a>
+                    </li>
+                    <li class="menu">
+                        <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Login">Login</a>
+                    </li>
+                }
+            </ul>
+        </nav>
+        <div>
+            <main id="content">
+                @RenderBody()
+            </main>
+
+            <footer>
+                Copyright &copy; Ermin and Sebastian BedN'Breakfast<br />
+                <a href="mailto:ErminAndSebastian@dontSendAMail.com">ErminAndSebastian@dontSendAMail.com</a>
+            </footer>
+        </div>
+    </div>
+    <environment include="Development">
+        <script src="~/lib/jquery/dist/jquery.js"></script>
+        <script src="~/js/site.js" asp-append-version="true"></script>
+    </environment>
+    <environment exclude="Development">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"
+                asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
+                asp-fallback-test="window.jQuery"
+                crossorigin="anonymous"
+                integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=">
+        </script>
+        <script src="~/js/site.min.js" asp-append-version="true"></script>
+    </environment>
+
+    @RenderSection("Scripts", required: false)
+</body>
+</html>
