@@ -15,11 +15,11 @@ namespace MorgenBuffet.Data
         public static void SeedData(ApplicationDbContext db, UserManager<ApplicationUser> userManager)
         {
             SeedAdmin(userManager);
-            Thread.Sleep(3000);
+            Thread.Sleep(7000);
             SeedKitchen(userManager);
-            Thread.Sleep(3000);
+            Thread.Sleep(7000);
             SeedRestaurant(userManager);
-            Thread.Sleep(3000);
+            Thread.Sleep(7000);
             SeedReception(userManager);
         }
         public static void SeedAdmin(UserManager<ApplicationUser> userManager)

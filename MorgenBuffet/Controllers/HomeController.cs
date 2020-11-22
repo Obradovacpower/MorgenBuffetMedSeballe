@@ -16,7 +16,18 @@ namespace MorgenBuffet.Controllers
             return View();
         }
 
-        public IActionResult Privacy()
+        public IActionResult Kitchen()
+        {
+            return View();
+        }
+
+
+        public IActionResult Reception()
+        {
+            return View();
+        }
+
+        public IActionResult Restaurant()
         {
             return View();
         }
