@@ -12,7 +12,20 @@ namespace MorgenBuffet.Repository
     public class Repository
     {
         private ApplicationDbContext db;
+        private static Repository repository;
 
+        private Repository(ApplicationDbContext db)
+        {
+            this.db = db;
+        }
+        public static void AddRepository(ApplicationDbContext db)
+        {
+            repository = new Repository(db);
+        }
+        public Repository GetRepository()
+        {
+            return repository;
+        }
         //receptionnist
         public void AddOrder(int roomNumber, int adults, int kids)
         {
