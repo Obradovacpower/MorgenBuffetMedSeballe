@@ -81,6 +81,8 @@ namespace MorgenBuffet
 
             app.UseAuthentication();
 
+            app.UseAuthorization();
+
             DbHelper.SeedData(context, userManager);
 
             app.UseEndpoints(endpoints =>

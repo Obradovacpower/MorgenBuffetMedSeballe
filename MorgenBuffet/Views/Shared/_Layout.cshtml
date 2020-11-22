@@ -7,7 +7,9 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - MorgenBuffet</title>
-
+    @section Styles{
+    <link rel="stylesheet" href="~/css/site.css" />
+     }
     <environment include="Development">
         <link rel="stylesheet" href="~/lib/normalize.css" />
         <link rel="stylesheet" href="~/css/site.css" />
@@ -23,25 +25,35 @@
         </header>
         <nav>
             <ul>
-                @if (User.HasClaim("Admin", "Yes"))
+                @if (User.HasClaim("Kitchen", "Yes"))
                 {
-                    <li><a asp-controller="Home" asp-action="Index" class="menu doAjax">Index</a></li>
+                    <li><a asp-controller="Home" asp-action="Kitchen" class="menuEnhanced">Kitchen</a></li>
+                }
+                else if (User.HasClaim("Reception", "Yes"))
+                {
+                    <li><a asp-controller="Home" asp-action="Reception" class="menuEnhanced">Reception</a></li>
+                }
+                else if (User.HasClaim("Admin", "Yes"))
+                {
+                    <li><a asp-controller="Home" asp-action="Index" class="menuEnhanced">Index</a></li>
                     <li>
-                        <a asp-controller="Home" asp-action="Kitchen" class="menu">Kitchen</a>
+                        <a asp-controller="Home" asp-action="Kitchen" class="menuEnhanced">Kitchen</a>
                     </li>
                     <li>
-                        <a asp-controller="Home" asp-action="Reception" class="menu">Reception</a>
+                        <a asp-controller="Home" asp-action="Reception" class="menuEnhanced">Reception</a>
                     </li>
                     <li>
-                        <a asp-controller="Home" asp-action="Restaurant" class="menu">Restaurant</a>
+                        <a asp-controller="Home" asp-action="Restaurant" class="menuEnhanced">Restaurant</a>
                     </li>
                 }
-                
+                else if (User.HasClaim("Restaurant", "Yes"))
+                {
+                    <li><a asp-controller="Home" asp-action="Restaurant" class="menuEnhanced">Restaurant</a></li>
+                }
+
+
                 @if (SignInManager.IsSignedIn(User) != true)
                 {
-                    <li class="menu">
-                        <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Register">Register</a>
-                    </li>
                     <li class="menu">
                         <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Login">Login</a>
                     </li>
@@ -73,6 +85,6 @@
         <script src="~/js/site.min.js" asp-append-version="true"></script>
     </environment>
 
-    @RenderSection("Scripts", required: false)
+    @RenderSection("Scripts", false)
 </body>
 </html>
