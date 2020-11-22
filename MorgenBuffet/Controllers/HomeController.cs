@@ -11,6 +11,11 @@ namespace MorgenBuffet.Controllers
 {
     public class HomeController : Controller
     {
+        Repository repository;
+        public HomeController()
+        {
+            repository = Repository.GetRepository();
+        }
         public IActionResult Index()
         {
             return View();

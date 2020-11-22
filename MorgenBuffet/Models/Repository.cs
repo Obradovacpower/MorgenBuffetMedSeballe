@@ -4,10 +4,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using MorgenBuffet.Models;
-using MorgenBuffet.DTO;
 
-namespace MorgenBuffet.Repository
+namespace MorgenBuffet.Models
 {
     public class Repository
     {
@@ -22,7 +20,7 @@ namespace MorgenBuffet.Repository
         {
             repository = new Repository(db);
         }
-        public Repository GetRepository()
+        public static Repository GetRepository()
         {
             return repository;
         }
