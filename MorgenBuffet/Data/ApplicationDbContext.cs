@@ -13,7 +13,8 @@ namespace MorgenBuffet.Data
             : base(options)
         {
         }
-
+        public DbSet<OrderEntity> OrderEntities { get; set; }
         public DbSet<ApplicationUser> ApplicationUsers { get; set; }
+
     }
 }
