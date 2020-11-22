@@ -1,24 +1,23 @@
 ﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
 for details on configuring this project to bundle and minify static web assets. */
 body {
-    background-color: #ffffcc;
-    background-image: url(/images/background.gif);
+    background-color: #fee1cc;
     color: #330000;
-    font-family: Verdana,Arial, sans-serif;
+    font-family: Andale Mono, monospace;
 }
 
 #wrapper {
     margin-left: auto;
     margin-right: auto;
     width: 90%;
-    background-color: #ffffcc;
+    background-color: #fee1cc;
     min-width: 700px;
     box-shadow: 5px 5px 5px #828282;
 }
 
 header {
-    background-color: #ccaa66;
-    color: #000000;
+    background-color: #fee1cc;
+    color: #20538D;
     text-align: center;
     margin: 0;
 }
@@ -37,15 +36,15 @@ nav {
     }
 
         nav a:link {
-            color: #996633;
+            color: rgba(0, 0, 0, 0.2);
         }
 
         nav a:visited {
-            color: #ccaa66;
+            color: #1A4575;
         }
 
         nav a:hover {
-            color: #330000;
+            color: #828282;
         }
 
     nav ul {
@@ -56,12 +55,12 @@ main {
     padding: 10px 20px 30px;
     margin-left: 150px;
     background-color: #f2eab7;
-    color: #000000;
+    color: #20538D;
 }
 
 footer {
-    background-color: #ccaa66;
-    color: #000000;
+    background-color: #fee1cc;
+    color: #20538D;
     font-size: .60em;
     font-style: italic;
     text-align: center;
@@ -71,7 +70,7 @@ footer {
 }
 
     footer a:link {
-        color: #f2eab7;
+        color: #20538D;
     }
 
     footer a:visited {
@@ -83,7 +82,7 @@ footer {
     }
 
 h1 {
-    background-color: #ccaa66;
+    background-color: #fee1cc;
     color: #000000;
     text-align: center;
     margin: 0;
@@ -91,15 +90,15 @@ h1 {
 
 h2 {
     text-transform: uppercase;
-    background-color: #ccaa66;
-    color: #663300;
+    background-color: #fee1cc;
+    color: #20538D;
     font-size: 1.2em;
     padding: 5px 0 0 5px;
     margin-right: 20px;
 }
 
 h3 {
-    color: brown;
+    color: blue;
     text-align: left;
     margin: 0;
 }
@@ -136,7 +135,7 @@ header, nav, figure, footer {
 }
 
 tr:nth-of-type(odd) {
-    background-color: #ccaa66;
+    background-color: #fee1cc;
 }
 
 form {

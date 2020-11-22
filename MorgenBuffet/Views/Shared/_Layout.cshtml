@@ -7,7 +7,9 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - MorgenBuffet</title>
-
+    @section Styles{
+    <link rel="stylesheet" href="~/css/site.css" />
+     }
     <environment include="Development">
         <link rel="stylesheet" href="~/lib/normalize.css" />
         <link rel="stylesheet" href="~/css/site.css" />
@@ -40,9 +42,6 @@
                 @if (SignInManager.IsSignedIn(User) != true)
                 {
                     <li class="menu">
-                        <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Register">Register</a>
-                    </li>
-                    <li class="menu">
                         <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Login">Login</a>
                     </li>
                 }
@@ -73,6 +72,6 @@
         <script src="~/js/site.min.js" asp-append-version="true"></script>
     </environment>
 
-    @RenderSection("Scripts", required: false)
+    @RenderSection("Scripts", false)
 </body>
 </html>
