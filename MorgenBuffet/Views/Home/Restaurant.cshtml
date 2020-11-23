@@ -1,25 +1,26 @@
-﻿@model o
+﻿@model MorgenBuffet.DTO.OrderDTO
 @{
     ViewData["Title"] = "Restaurant";
 }
 <h1>Reception</h1>
-<form asp-action="Create" method="post">
+<p class="align-content-center"> Check customers in!</p>
+<form asp-action="Update" method="put">
     <div class="form-group">
-        <label asp-for="orderDTO.RoomNumber" for="orderDTO.RoomNumber">Room number:</label>
+        <label asp-for="RoomNumber" for="RoomNumber">Room number:</label>
         <input type="number" name="RoomNumber" class="form-control" id="roomNr" />
         <div />
 
         <div class="form-group"></div>
-        <label asp-for="orderDTO.Adults" for="orderDTO.Adults"> Number of Adults:</label>
-        <input asp-for="orderDTO.Adults" class="form-control" />
+        <label asp-for="Adults" for="orderDTO.Adults"> Number of Adults:</label>
+        <input asp-for="Adults" class="form-control" />
     </div>
 
     <div class="form-check group">
-        <label asp-for="orderDTO.Kids">Number of Children:</label>
-        <input asp-for="orderDTO.Kids" class="form-control" />
+        <label asp-for="Kids">Number of Children:</label>
+        <input asp-for="Kids" class="form-control" />
     </div>
 
     <div class="form-group">
-        <button type="submit">Check In!</button>
+        <button type="submit">Check In for breakfast!</button>
     </div>
 </form>

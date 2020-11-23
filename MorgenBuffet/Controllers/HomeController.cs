@@ -70,8 +70,20 @@ namespace MorgenBuffet.Controllers
             }
             return View("Index");
         }
-        public ViewResult Create()
+
+        public async Task<ActionResult> Update(OrderDTO order)
         {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    await repository.CheckIn(order);
+                }
+            }
+            catch
+            {
+
+            }
             return View("Index");
         }
 
