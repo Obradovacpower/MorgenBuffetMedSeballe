@@ -13,16 +13,16 @@ namespace MorgenBuffet.Models
         private ApplicationDbContext db;
         private static Repository repository;
 
-        private Repository(ApplicationDbContext db)
+        public Repository(ApplicationDbContext db)
         {
             this.db = db;
         }
-        public static void AddRepository(ApplicationDbContext db)
+        public static Repository GetRepository(ApplicationDbContext db = null)
         {
-            repository = new Repository(db);
-        }
-        public static Repository GetRepository()
-        {
+            if(repository == null)
+            {
+                repository = new Repository(db);
+            }
             return repository;
         }
         //receptionnist
@@ -34,13 +34,20 @@ namespace MorgenBuffet.Models
             order.Kids = newOrder.Kids;
             order.RoomNumber = newOrder.RoomNumber;
             order.Date = DateTime.Today;
-            db.Add(order);
+            await db.AddAsync(order);
             await db.SaveChangesAsync();
 
         }
-        public async Task<List<OrderEntity>> GetOrdersToday()
+        public async Task<List<OrderDTO>> GetOrdersToday()
         {
-            return await db.Set<OrderEntity>().Where(o => o.Date == DateTime.Today && o.CheckIn == true).ToListAsync();
+            List<OrderEntity> orders = new List<OrderEntity>();
+            List<OrderDTO> ordersDTO = new List<OrderDTO>();
+            orders = await db.Set<OrderEntity>().Where(o => o.Date == DateTime.Today && o.CheckIn == true).ToListAsync();
+            foreach(OrderEntity order in orders)
+            {
+                ordersDTO.Add(new OrderDTO(order));
+            }
+            return ordersDTO;
         }
         //restaurant
         public async Task CheckIn(OrderDTO dto)

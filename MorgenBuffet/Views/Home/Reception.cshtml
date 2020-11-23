@@ -1,20 +1,26 @@
-﻿@page
+﻿@model MorgenBuffet.DTO.OrderDTO
 @{
     ViewData["Title"] = "Reception";
 }
 <h1>Reception</h1>
-    <form asp-action="Create" method="post">
-        <div class="form-group">
-                    <label class="control-label">Room number:</label>
-                    <input  id="roomNr" />
+<form asp-action="PostAddOrder" method="post">
+    <div class="form-group">
+        <label asp-for="RoomNumber">Room number:</label>
+        <input asp-for="RoomNumber" class="form-control" id="roomNr" />
+        <div />
 
-                    <label> Number of Adults:</label>
-                    <input id="adultNr" />
+        <div class="form-group"></div>
+        <label asp-for="Adults"> Number of Adults:</label>
+        <input asp-for="Adults" class="form-control" />
+    </div>
 
-                    <label>Number of Children:</label>
-                    <input id="childrenNr" />
-        </div>
-        <div class="text-center">
-            <button> Check guests in!</button>
-        </div>
-    </form>
+    <div class="form-check group">
+        <label asp-for="Kids">Number of Children:</label>
+        <input asp-for="Kids" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <button type="submit">Check In!</button>
+    </div>
+
+</form>

@@ -7,15 +7,17 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using MorgenBuffet.DTO;
 using MorgenBuffet.Models;
+using MorgenBuffet.DTO;
+using MorgenBuffet.Data;
 
 namespace MorgenBuffet.Controllers
 {
     public class HomeController : Controller
     {
         Repository repository;
-        public HomeController()
+        public HomeController(ApplicationDbContext db)
         {
-            repository = Repository.GetRepository();
+            repository = new Repository(db);
         }
         public IActionResult Index()
         {
@@ -37,14 +39,39 @@ namespace MorgenBuffet.Controllers
         {
             return View();
         }
-        public IActionResult Reception2()
+        //reception
+        [HttpGet]
+        public async Task<ActionResult> GetOrders()
         {
-            return View();
-        }
+            List<OrderDTO> orders = new List<OrderDTO>();
+            try 
+            {
+                orders = await repository.GetOrdersToday();
+            }
+            catch
+            {
 
-        public async Task<ViewResult> Create(OrderDTO dto)
+            }
+            return View(orders);
+        }
+        [HttpPost]
+        public async Task<ActionResult> PostAddOrder(OrderDTO order)
         {
-            await repository.AddOrder(dto);
+            try
+            {
+                if(ModelState.IsValid)
+                {
+                    await repository.AddOrder(order);
+                }
+            }
+            catch
+            {
+
+            }
+            return View("Index");
+        }
+        public ViewResult Create()
+        {
             return View("Index");
         }
 
