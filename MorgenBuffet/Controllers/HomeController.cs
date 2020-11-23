@@ -46,8 +46,6 @@ namespace MorgenBuffet.Controllers
             return View();
         }
         //reception
-        [HttpGet]
-        public async Task<ActionResult> GetOrders()
         public async Task<IActionResult> ReceptionList()
         {
             List<OrderDTO> orders = new List<OrderDTO>();
@@ -60,15 +58,6 @@ namespace MorgenBuffet.Controllers
 
             }
             return View(orders);
-        }
-        public IActionResult Reception()
-        {
-            return View();
-        }
-
-        public IActionResult Restaurant()
-        {
-            return View();
         }
         //reception
         [HttpPost]
