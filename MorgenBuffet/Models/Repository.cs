@@ -43,12 +43,12 @@ namespace MorgenBuffet.Models
             return db.Set<OrderEntity>().Where(o => o.Date == DateTime.Today && o.CheckIn == true).ToList();
         }
         //restaurant
-        public void CheckIn(int roomNumber, int adults, int kids)
+        public void CheckIn(OrderDTO DTO)
         {
-            OrderEntity order = db.Set<OrderEntity>().Where(o => o.RoomNumber == roomNumber && o.Date.Date == DateTime.Today).FirstOrDefault();
+            OrderEntity order = db.Set<OrderEntity>().Where(o => o.RoomNumber == DTO.RoomNumber && o.Date.Date == DateTime.Today).FirstOrDefault();
             order.CheckIn = true;
-            order.Adults = adults;
-            order.Kids = kids;
+            order.Adults = DTO.Adults;
+            order.Kids = DTO.Kids;
             db.Update(order);
             db.SaveChanges();
         }
