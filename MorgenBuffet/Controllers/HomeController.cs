@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using MorgenBuffet.DTO;
 using MorgenBuffet.Models;
 
 namespace MorgenBuffet.Controllers
@@ -37,9 +38,9 @@ namespace MorgenBuffet.Controllers
             return View();
         }
 
-        public ViewResult Receptionist(OrderDTO model)
+        public ViewResult Receptionist(OrderDTO order)
         {
-            return View("Reception", model);
+            return View("Reception", order);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
