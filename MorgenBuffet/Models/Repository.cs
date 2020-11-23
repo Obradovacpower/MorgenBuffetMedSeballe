@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using MorgenBuffet.DTO;
 
 namespace MorgenBuffet.Models
 {
@@ -25,13 +26,13 @@ namespace MorgenBuffet.Models
             return repository;
         }
         //receptionnist
-        public void AddOrder(int roomNumber, int adults, int kids)
+        public void AddOrder(OrderDTO newOrder)
         {
             OrderEntity order = new OrderEntity();
 
-            order.Adults = adults;
-            order.Kids = kids;
-            order.RoomNumber = roomNumber;
+            order.Adults = newOrder.Adults;
+            order.Kids = newOrder.Kids;
+            order.RoomNumber = newOrder.RoomNumber;
             order.Date = DateTime.Today;
             db.Add(order);
             db.SaveChanges();
