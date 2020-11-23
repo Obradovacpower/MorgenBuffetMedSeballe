@@ -25,7 +25,6 @@
         </header>
         <nav>
             <ul>
-                <li> <a asp-controller="Home" asp-action="Reception2"/>Det Nye</li>
                 @if (User.HasClaim("Kitchen", "Yes"))
                 {
                     <li><a asp-controller="Home" asp-action="Kitchen" class="menuEnhanced">Kitchen</a></li>
