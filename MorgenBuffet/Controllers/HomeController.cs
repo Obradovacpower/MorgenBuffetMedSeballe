@@ -24,9 +24,18 @@ namespace MorgenBuffet.Controllers
             return View();
         }
 
-        public IActionResult Kitchen()
+        public async Task<IActionResult> Kitchen()
         {
-            return View();
+            List<OrderDTO> orders = new List<OrderDTO>();
+            try
+            {
+                orders = await repository.GetOrdersToday();
+            }
+            catch
+            {
+
+            }
+            return View(orders);
         }
 
 
@@ -89,7 +98,7 @@ namespace MorgenBuffet.Controllers
         {
             List<OrderDTO> orders = new List<OrderDTO>();
             orders = await repository.GetOrders(date.Date);
-            return View(orders);
+            return View("Kitchen", orders);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

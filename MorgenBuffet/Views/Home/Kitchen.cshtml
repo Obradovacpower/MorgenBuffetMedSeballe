@@ -1,4 +1,5 @@
-﻿@{
+﻿@model List<MorgenBuffet.DTO.OrderDTO>
+@{
     ViewData["Title"] = "Kitchen";
 }
 
@@ -8,7 +9,7 @@
     <form asp-action="GetOrdersOnDate" method="get">
         <div class="form-group">
             <label> Date:</label>
-            <input type="datetime" class="form-control" id="date" name="date" />
+            <input type="date" class="form-control" id="date" name="date" />
         </div>
 
         <div class="form-group">
@@ -16,3 +17,18 @@
         </div>
     </form>
 </div>
+<table>
+    <tr>
+        <th>Room Number</th>
+        <th>Adults</th>
+        <th>Kids</th>
+    </tr>
+    @foreach (var element in Model)
+    {
+        <tr>
+            <td>@element.RoomNumber</td>
+            <td>@element.Adults</td>
+            <td>@element.Kids</td>
+        </tr>
+    }
+</table>
