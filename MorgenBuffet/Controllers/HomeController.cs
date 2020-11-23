@@ -37,6 +37,11 @@ namespace MorgenBuffet.Controllers
             return View();
         }
 
+        public ViewResult Receptionist(OrderDTO model)
+        {
+            return View("Reception", model);
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
