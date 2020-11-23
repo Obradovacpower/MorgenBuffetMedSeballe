@@ -29,6 +29,25 @@ namespace MorgenBuffet.Controllers
             return View();
         }
 
+
+        public IActionResult Reception()
+        {
+            return View();
+        }
+
+        public IActionResult Restaurant()
+        {
+            return View();
+        }
+
+        public IActionResult RefreshKitchen()
+        {
+            RedirectToAction("Kitchen", "HomeController");
+            return View();
+        }
+        //reception
+        [HttpGet]
+        public async Task<ActionResult> GetOrders()
         public async Task<IActionResult> ReceptionList()
         {
             List<OrderDTO> orders = new List<OrderDTO>();
