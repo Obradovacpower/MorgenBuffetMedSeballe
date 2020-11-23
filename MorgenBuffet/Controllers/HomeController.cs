@@ -70,6 +70,21 @@ namespace MorgenBuffet.Controllers
             }
             return View("Index");
         }
+        //restaurant
+        [HttpPost]
+        public async Task CheckIn(OrderDTO order)
+        {
+            await repository.CheckIn(order);
+        }
+        //kitchen
+        [HttpGet]
+        public async Task<ActionResult> GetOrdersOnDate(DateTime date)
+        {
+            List<OrderDTO> orders = new List<OrderDTO>();
+            orders = await repository.GetOrders(date.Date);
+            return View(orders);
+        }
+
         public ViewResult Create()
         {
             return View("Index");

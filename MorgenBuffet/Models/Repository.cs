@@ -25,6 +25,15 @@ namespace MorgenBuffet.Models
             }
             return repository;
         }
+        private List<OrderDTO> convert(List<OrderEntity> orders)
+        {
+            List<OrderDTO> ordersDTO = new List<OrderDTO>();
+            foreach (OrderEntity order in orders)
+            {
+                ordersDTO.Add(new OrderDTO(order));
+            }
+            return ordersDTO;
+        }
         //receptionnist
         public async Task AddOrder(OrderDTO newOrder)
         {
@@ -40,14 +49,7 @@ namespace MorgenBuffet.Models
         }
         public async Task<List<OrderDTO>> GetOrdersToday()
         {
-            List<OrderEntity> orders = new List<OrderEntity>();
-            List<OrderDTO> ordersDTO = new List<OrderDTO>();
-            orders = await db.Set<OrderEntity>().Where(o => o.Date == DateTime.Today && o.CheckIn == true).ToListAsync();
-            foreach(OrderEntity order in orders)
-            {
-                ordersDTO.Add(new OrderDTO(order));
-            }
-            return ordersDTO;
+            return convert(await db.Set<OrderEntity>().Where(o => o.Date == DateTime.Today && o.CheckIn == true).ToListAsync());
         }
         //restaurant
         public async Task CheckIn(OrderDTO dto)
@@ -60,9 +62,9 @@ namespace MorgenBuffet.Models
             await db.SaveChangesAsync();
         }
         //kitchen
-        public async Task<List<OrderEntity>> GetOrders(DateTime date)
+        public async Task<List<OrderDTO>> GetOrders(DateTime date)
         {
-            return await db.Set<OrderEntity>().Where(o => o.Date.Date == date.Date).ToListAsync();
+            return convert(await db.Set<OrderEntity>().Where(o => o.Date.Date == date.Date).ToListAsync());
         }
     }
 }
