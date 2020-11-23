@@ -26,7 +26,7 @@ namespace MorgenBuffet.Models
             return repository;
         }
         //receptionnist
-        public async Task<IAsyncResult> AddOrder(OrderDTO newOrder)
+        public async Task AddOrder(OrderDTO newOrder)
         {
             OrderEntity order = new OrderEntity();
 
@@ -36,7 +36,6 @@ namespace MorgenBuffet.Models
             order.Date = DateTime.Today;
             db.Add(order);
             await db.SaveChangesAsync();
-            return Ok(order);
 
         }
         public async Task<List<OrderEntity>> GetOrdersToday()

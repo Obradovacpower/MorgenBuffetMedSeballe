@@ -38,11 +38,14 @@ namespace MorgenBuffet.Controllers
         {
             return View();
         }
-        [HttpPost]
-        public ViewResult Receptionist(OrderDTO order)
+        public IActionResult Reception2()
         {
-            repository.AddOrder(order);
-            return View("Reception", order);
+            return View();
+        }
+
+        public ViewResult Create()
+        {
+            return View("Index");
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
