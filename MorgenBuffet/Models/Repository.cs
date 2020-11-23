@@ -49,7 +49,7 @@ namespace MorgenBuffet.Models
         }
         public async Task<List<OrderDTO>> GetOrdersToday()
         {
-            return convert(await db.Set<OrderEntity>().Where(o => o.Date == DateTime.Today && o.CheckIn == true).ToListAsync());
+            return convert(await db.Set<OrderEntity>().Where(o => o.Date.Date == DateTime.Today && o.CheckIn == true).ToListAsync());
         }
         //restaurant
         public async Task CheckIn(OrderDTO dto)

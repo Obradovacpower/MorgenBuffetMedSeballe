@@ -1,0 +1,23 @@
+﻿@model List<MorgenBuffet.DTO.OrderDTO>
+
+@{
+    ViewData["Title"] = "ReceptionList";
+}
+
+<h1>ReceptionList</h1>
+<table>
+    <tr>
+        <th>Room Number</th>
+        <th>Adults</th>
+        <th>Kids</th>
+    </tr>
+    @foreach (var element in Model)
+    {
+        <tr>
+            <td>@element.RoomNumber</td>
+            <td>@element.Adults</td>
+            <td>@element.Kids</td>
+        </tr>
+    }
+</table>
+

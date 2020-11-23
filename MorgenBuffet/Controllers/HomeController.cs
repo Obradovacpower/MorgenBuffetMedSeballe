@@ -29,7 +29,19 @@ namespace MorgenBuffet.Controllers
             return View();
         }
 
+        public async Task<IActionResult> ReceptionList()
+        {
+            List<OrderDTO> orders = new List<OrderDTO>();
+            try
+            {
+                orders = await repository.GetOrdersToday();
+            }
+            catch
+            {
 
+            }
+            return View(orders);
+        }
         public IActionResult Reception()
         {
             return View();
@@ -40,20 +52,6 @@ namespace MorgenBuffet.Controllers
             return View();
         }
         //reception
-        [HttpGet]
-        public async Task<ActionResult> GetOrders()
-        {
-            List<OrderDTO> orders = new List<OrderDTO>();
-            try 
-            {
-                orders = await repository.GetOrdersToday();
-            }
-            catch
-            {
-
-            }
-            return View(orders);
-        }
         [HttpPost]
         public async Task<ActionResult> PostAddOrder(OrderDTO order)
         {
