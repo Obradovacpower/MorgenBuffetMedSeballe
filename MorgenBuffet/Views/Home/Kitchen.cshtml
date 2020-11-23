@@ -1,4 +1,4 @@
-﻿@model List<MorgenBuffet.DTO.OrderDTO>
+﻿@model MorgenBuffet.DTO.OrderSumDTO
 @{
     ViewData["Title"] = "Kitchen";
 }
@@ -17,18 +17,9 @@
         </div>
     </form>
 </div>
-<table>
-    <tr>
-        <th>Room Number</th>
-        <th>Adults</th>
-        <th>Kids</th>
-    </tr>
-    @foreach (var element in Model)
-    {
-        <tr>
-            <td>@element.RoomNumber</td>
-            <td>@element.Adults</td>
-            <td>@element.Kids</td>
-        </tr>
-    }
-</table>
+<label>Expected adults: @Model.ExpectedAdults</label>
+<label>Expected kids: @Model.ExpectedKids</label>
+<label>checked in adults: @Model.Adults</label>
+<label>checked in kids: @Model.Kids</label>
+<label>remaining adults: @Model.RemainingAdults</label>
+<label>remaining kids: @Model.RemainingKids</label>

@@ -62,9 +62,28 @@ namespace MorgenBuffet.Models
             await db.SaveChangesAsync();
         }
         //kitchen
-        public async Task<List<OrderDTO>> GetOrders(DateTime date)
+        public async Task<OrderSumDTO> GetOrders(DateTime date)
         {
-            return convert(await db.Set<OrderEntity>().Where(o => o.Date.Date == date.Date).ToListAsync());
+            List<OrderEntity> orders = new List<OrderEntity>();
+            orders = await db.Set<OrderEntity>().Where(o => o.Date.Date == date.Date).ToListAsync();
+            OrderSumDTO sum = new OrderSumDTO();
+            foreach(OrderEntity order in orders)
+            {
+                sum.ExpectedAdults += order.Adults;
+                sum.ExpectedKids += order.Kids;
+                if (order.CheckIn)
+                {
+                    sum.Adults += order.Adults;
+                    sum.Kids += order.Kids;
+                }
+                else
+                {
+                    sum.RemainingAdults += order.Adults;
+                    sum.RemainingKids += order.Kids;
+                }
+            }
+            
+            return sum;
         }
     }
 }

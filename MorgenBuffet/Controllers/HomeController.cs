@@ -26,10 +26,10 @@ namespace MorgenBuffet.Controllers
 
         public async Task<IActionResult> Kitchen()
         {
-            List<OrderDTO> orders = new List<OrderDTO>();
+            OrderSumDTO orders = new OrderSumDTO();
             try
             {
-                orders = await repository.GetOrdersToday();
+                orders = await repository.GetOrders(DateTime.Today);
             }
             catch
             {
@@ -96,7 +96,7 @@ namespace MorgenBuffet.Controllers
         [HttpGet]
         public async Task<ActionResult> GetOrdersOnDate(DateTime date)
         {
-            List<OrderDTO> orders = new List<OrderDTO>();
+            OrderSumDTO orders = new OrderSumDTO();
             orders = await repository.GetOrders(date.Date);
             return View("Kitchen", orders);
         }

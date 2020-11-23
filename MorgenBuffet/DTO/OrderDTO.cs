@@ -15,6 +15,7 @@ namespace MorgenBuffet.DTO
             Adults = order.Adults;
             Kids = order.Kids;
         }
+
         public int RoomNumber { get; set; }
         public int Adults { get; set; }
         public int Kids { get; set; }
