@@ -38,24 +38,24 @@ namespace MorgenBuffet.Models
             db.SaveChanges();
 
         }
-        public List<OrderEntity> GetOrdersToday()
+        public async Task<List<OrderEntity>> GetOrdersToday()
         {
-            return db.Set<OrderEntity>().Where(o => o.Date == DateTime.Today && o.CheckIn == true).ToList();
+            return await db.Set<OrderEntity>().Where(o => o.Date == DateTime.Today && o.CheckIn == true).ToListAsync();
         }
         //restaurant
-        public void CheckIn(OrderDTO DTO)
+        public async Task CheckIn(OrderDTO dto)
         {
-            OrderEntity order = db.Set<OrderEntity>().Where(o => o.RoomNumber == DTO.RoomNumber && o.Date.Date == DateTime.Today).FirstOrDefault();
+            OrderEntity order = await db.Set<OrderEntity>().Where(o => o.RoomNumber == dto.RoomNumber && o.Date.Date == DateTime.Today).FirstOrDefaultAsync();
             order.CheckIn = true;
-            order.Adults = DTO.Adults;
-            order.Kids = DTO.Kids;
+            order.Adults = dto.Adults;
+            order.Kids = dto.Kids;
             db.Update(order);
-            db.SaveChanges();
+            await db.SaveChangesAsync();
         }
         //kitchen
-        public List<OrderEntity> GetOrders(DateTime date)
+        public async Task<List<OrderEntity>> GetOrders(DateTime date)
         {
-            return db.Set<OrderEntity>().Where(o => o.Date.Date == date.Date).ToList();
+            return await db.Set<OrderEntity>().Where(o => o.Date.Date == date.Date).ToListAsync();
         }
     }
 }
