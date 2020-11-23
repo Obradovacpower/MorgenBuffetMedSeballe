@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using MorgenBuffet.DTO;
 using MorgenBuffet.Models;
+using MorgenBuffet.DTO;
 
 namespace MorgenBuffet.Controllers
 {
