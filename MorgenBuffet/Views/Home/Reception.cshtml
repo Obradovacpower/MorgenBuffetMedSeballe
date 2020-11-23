@@ -1,25 +1,20 @@
-﻿@{
+﻿@page
+@{
+    ViewData["Title"] = "Reception";
 }
 <h1>Reception</h1>
-<div>
-    @model OrderDTO
-    <form id="sendFromReception">
-        <ul>
-            <li>
-                <label>Room number:</label>
-                <input id="roomNr" />
-            </li>
-            <li>
-                <label> Number of Adults:</label>
-                <input id="adultNr" />
-            </li>
-            <li>
-                <label>Number of Children:</label>
-                <input id="childrenNr" />
-            </li>
-        </ul>
+    <form asp-action="Create" method="post">
+        <div class="form-group">
+                    <label class="control-label">Room number:</label>
+                    <input  id="roomNr" />
+
+                    <label> Number of Adults:</label>
+                    <input id="adultNr" />
+
+                    <label>Number of Children:</label>
+                    <input id="childrenNr" />
+        </div>
         <div class="text-center">
             <button> Check guests in!</button>
         </div>
     </form>
-</div>

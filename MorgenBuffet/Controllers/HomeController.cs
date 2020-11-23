@@ -38,9 +38,10 @@ namespace MorgenBuffet.Controllers
         {
             return View();
         }
-
+        [HttpPost]
         public ViewResult Receptionist(OrderDTO order)
         {
+            repository.AddOrder(order);
             return View("Reception", order);
         }
 

@@ -1,0 +1,24 @@
+﻿@using MorgenBuffet.Views.Home
+@model Reception2Model
+@{
+    ViewData["Title"] = "Reception";
+}
+<h1>Reception</h1>
+<form asp-action="Create" method="post">
+    <div class="form-group">
+        <label asp-for="orderDTO.RoomNumber">Room number:</label>
+        <input asp-for="orderDTO.RoomNumber" class="form-control"  id="roomNr" />
+
+        <label asp-for="orderDTO.Adults"> Number of Adults:</label>
+        <input asp-for="orderDTO.Adults" class="form-control" />
+
+        <label asp-for="orderDTO.Kids">Number of Children:</label>
+        <input asp-for="orderDTO.Kids" class="form-control" />
+    </div>
+    <div class="form-group">
+        <button type="submit">Check In!</button>
+    </div>
+    <div class="text-center">
+        <button> Check guests in!</button>
+    </div>
+</form>
