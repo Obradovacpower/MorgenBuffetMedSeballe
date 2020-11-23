@@ -39,6 +39,12 @@ namespace MorgenBuffet.Controllers
         {
             return View();
         }
+
+        public IActionResult RefreshKitchen()
+        {
+            RedirectToAction("Kitchen", "HomeController");
+            return View();
+        }
         //reception
         [HttpGet]
         public async Task<ActionResult> GetOrders()
