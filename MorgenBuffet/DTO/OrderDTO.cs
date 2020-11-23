@@ -7,9 +7,9 @@ namespace MorgenBuffet.DTO
 {
     public class OrderDTO
     {
-        public OrderDTO()
-        {
+        public int RoomNumber { get; set; }
+        public int Adults { get; set; }
+        public int Kids { get; set; }
 
-        }
     }
 }
